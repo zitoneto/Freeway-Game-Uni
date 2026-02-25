@@ -16,8 +16,13 @@ func _on_timer_carros_rapidos_timeout() -> void:
 	add_child(carros)
 	var pista_y = pistas_rapidas_y[randi_range(0, pistas_rapidas_y.size() - 1)]
 	carros.position = Vector2(-10, pista_y)
+
 	carros.set_linear_velocity(Vector2(randf_range(700, 710), 0))
 	carros.set_linear_damp(0.0)
+
+	carros.set_linear_velocity(Vector2(randf_range(700, 720), 0))
+	carros.set_linear_damp(0.5)
+
 
 
 
@@ -26,8 +31,13 @@ func _on_timer_carros_lentos_timeout() -> void:
 	add_child(carros)
 	var pista_y = pistas_lentas_y[randi_range(0, pistas_rapidas_y.size() - 1)]
 	carros.position = Vector2(-10, pista_y)
+
 	carros.set_linear_velocity(Vector2(randf_range(300, 310), 0))
 	carros.set_linear_damp(0.0)
+
+	carros.set_linear_velocity(Vector2(randf_range(700, 720), 0))
+	carros.set_linear_damp(0.5)
+
 
 
 
@@ -43,3 +53,7 @@ func _on_player_pontua() -> void:
 		$TimerCarrosLentos.stop()
 		$AudioVitoria.play()
 		$Player.speed = 0
+
+
+func _on_hud_reinicia() -> void:
+	get_tree().reload_current_scene()

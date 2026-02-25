@@ -46,7 +46,11 @@ animations = [{
 [node name="Player" type="Area2D" unique_id=613278460]
 script = ExtResource("1_ybr15")
 
+<<<<<<< HEAD
 [node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=1190570989]
+=======
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1190570989]
+>>>>>>> ce36ef939df034aba02f04790de6a48ecf5441fb
 stream = ExtResource("1_8vhvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1973527233]

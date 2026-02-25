@@ -39,4 +39,5 @@ func _on_body_entered(body: Node2D) -> void:
 		position = posicao_inicial
 	else:
 		$Audio.play()
+		$audio.play()
 		position = posicao_inicial
