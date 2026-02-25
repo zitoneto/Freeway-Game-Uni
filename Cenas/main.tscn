@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://muciuk6qdjwc"]
+
+[ext_resource type="Texture2D" uid="uid://cqydu8hro13ex" path="res://Material Freeway/wallpaperfreeway.png" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://c6xu2nbmo16qg" path="res://Cenas/main.gd" id="1_x6di6"]
+[ext_resource type="PackedScene" uid="uid://dhyoqxuun0ghm" path="res://Cenas/linha_chegada.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dek5lc5s4w441" path="res://Cenas/player.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b202w6bw71m2f" path="res://Cenas/hud.tscn" id="4_lb8y5"]
+[ext_resource type="AudioStream" uid="uid://cvdhihv80xqwx" path="res://Material Freeway/sons/tema.wav" id="5_n00j1"]
+[ext_resource type="AudioStream" uid="uid://bx53m2dvhttkd" path="res://Material Freeway/sons/ganhou.wav" id="6_x6di6"]
+[ext_resource type="AudioStream" uid="uid://iaq8mmo755w3" path="res://Material Freeway/sons/ponto.wav" id="7_btbr3"]
+
+[node name="Main" type="Node" unique_id=496808836]
+script = ExtResource("1_x6di6")
+
+[node name="Pista" type="Sprite2D" parent="." unique_id=275704124]
+texture = ExtResource("1_h2yge")
+centered = false
+
+[node name="LinhaChegada" parent="." unique_id=1501306094 instance=ExtResource("2_1bvp3")]
+position = Vector2(640, 64)
+
+[node name="Player" parent="." unique_id=613278460 instance=ExtResource("3_lquwl")]
+
+[node name="HUD" parent="." unique_id=1906715036 instance=ExtResource("4_lb8y5")]
+
+[node name="TimerCarrosLentos" type="Timer" parent="." unique_id=74760946]
+wait_time = 0.5
+autostart = true
+
+[node name="TimerCarrosRapidos" type="Timer" parent="." unique_id=1218127534]
+wait_time = 0.3
+autostart = true
+
+[node name="AudioTema" type="AudioStreamPlayer2D" parent="." unique_id=1768169471]
+stream = ExtResource("5_n00j1")
+
+[node name="AudioVitoria" type="AudioStreamPlayer2D" parent="." unique_id=679038885]
+stream = ExtResource("6_x6di6")
+
+[node name="AudioPonto" type="AudioStreamPlayer2D" parent="." unique_id=2049385002]
+stream = ExtResource("7_btbr3")
+
+[connection signal="pontua" from="Player" to="." method="_on_player_pontua"]
+[connection signal="reinicia" from="HUD" to="." method="_on_hud_reinicia"]

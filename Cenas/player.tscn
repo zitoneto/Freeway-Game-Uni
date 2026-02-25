@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dek5lc5s4w441"]
+
+[ext_resource type="AudioStream" uid="uid://owpbc6uocvn6" path="res://Material Freeway/sons/colide.wav" id="1_8vhvd"]
+[ext_resource type="Script" uid="uid://b2kpxn35uaggi" path="res://Cenas/player.gd" id="1_ybr15"]
+[ext_resource type="Texture2D" uid="uid://c4krmn8kimnkr" path="res://Material Freeway/galinha/baixo/sprite_0.png" id="2_e2nbm"]
+[ext_resource type="Texture2D" uid="uid://bnc6fbdfj4xts" path="res://Material Freeway/galinha/baixo/sprite_1.png" id="3_ybr15"]
+[ext_resource type="Texture2D" uid="uid://di158xd5amf7k" path="res://Material Freeway/galinha/baixo/sprite_2.png" id="4_4q8k4"]
+[ext_resource type="Texture2D" uid="uid://bgygxyqad2rwk" path="res://Material Freeway/galinha/cima/sprite_0.png" id="5_2enhl"]
+[ext_resource type="Texture2D" uid="uid://sc2qh8k1x7uq" path="res://Material Freeway/galinha/cima/sprite_1.png" id="6_ruciq"]
+[ext_resource type="Texture2D" uid="uid://6hsjlvchquqv" path="res://Material Freeway/galinha/cima/sprite_2.png" id="7_yk6xx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bb2x8"]
+radius = 15.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60xba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e2nbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ybr15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4q8k4")
+}],
+"loop": true,
+"name": &"baixo",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2enhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ruciq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yk6xx")
+}],
+"loop": true,
+"name": &"cima",
+"speed": 8.0
+}]
+
+[node name="Player" type="Area2D" unique_id=613278460]
+script = ExtResource("1_ybr15")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1190570989]
+stream = ExtResource("1_8vhvd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1973527233]
+shape = SubResource("CircleShape2D_bb2x8")
+
+[node name="Animacao" type="AnimatedSprite2D" parent="." unique_id=530199203]
+position = Vector2(0, -1)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_60xba")
+animation = &"baixo"
+frame_progress = 0.9747779
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
